@@ -1,51 +1,35 @@
 #include<iostream>
 using namespace std;
 
-int binary_search(int arr[], int l, int r, int key)
-{
-  if(r < l)
-        return -1;
-    int mid = l + (r-l)/2;
-
-    if(arr[mid] == key)
-        return mid;
-    if(arr[mid] > key)
-        return binary_search(arr, l , mid-1, key);
-    
-    return binary_search(arr, mid+1, r, key);
-}
-
-int countFrequency(int arr[], int n, int key)
-{
-    int pos = binary_search(arr, 0, n-1, key);
-
-    if(pos == -1)
-        return 0;
-    int count = 1; int left = pos-1, right = pos+1;
-    while(left>=0 && arr[left] == key)
-        {
-            count++;
-            left--;
-        }
-    while(right < n && arr[right] == key)
-    {
-        count++;
-        right++;
-    } 
-    return count;
-}
-
 int main()
 {
-    int n, key;
-    cout<<"Enter the size of array: ";
-    cin>>n;
-    int a[n];
-    cout<<"Enter the elements of array: ";
-    for(int i=0 ; i<n ; i++)
-        cin>>a[i];
-    cout<<"Enter the key element: ";
-    cin>>key;
-    cout<<"The frequency of element is: "<<countFrequency(a, n, key);
+    int t, n;
+    cin>>t;
+    while(t != 0)
+    {
+        cin>>n;
+        int arr[n], temp, j, shift = 0, comp = 0;
+        for(int i=0 ; i<n ; i++)
+            cin>>arr[i];
+        for(int i=1 ; i<n ; i++)
+        {
+            j = i-1;
+            temp = arr[i];
+            while(j>=0 && arr[j] > temp)
+            {
+                arr[j+1] = arr[j];
+                j--;
+                shift++;
+                comp++;
+            }
+            arr[j+1] = temp;
+            shift++;
+        }
+        for(int i=0 ; i<n ; i++)
+            cout<<arr[i]<<" ";
+        cout<<"\ncomparisons = "<<comp<<endl;
+        cout<<"shifts = "<<shift<<endl;
+        t--;
+    }
     return 0;
 }
