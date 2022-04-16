@@ -3,6 +3,11 @@ using namespace std;
 
 int main()
 {
+    int t;
+    cout<<"Enter the number of test cases: ";
+    cin>>t;
+    while(t != 0)
+    {
     int n, key = -1, i;
     cout<<"Enter the size of array: ";
     cin>>n;
@@ -27,6 +32,8 @@ int main()
     }
     else{
     cout<<"Total number of comparison: "<<i+1<<endl;
+    }
+    t--;
     }
     return 0;
 }
