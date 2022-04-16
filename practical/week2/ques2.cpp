@@ -3,35 +3,36 @@ using namespace std;
 
 int main()
 {
-     int com = 0, n;
-     cout<<"Enter the size of array: ";
-     cin>>n;
-     int arr[n];
-     //input the elements of array
-     cout<<"Enter the elements: ";
-     for(int i=0 ;i<n ; i++)
-        cin>>arr[i];
-
-    //Selection Sort
-    for(int i=0 ;i<n-1 ; i++)
+    int t;
+    cin>>t;
+    while(t!=0)
     {
-        int min_index = i;
-        for(int j=i+1 ; j<n ; j++)
-            if(arr[j] < arr[min_index])
+        int n, key, flag = 0;
+        cout<<"Enter the size of array: ";
+        cin>>n;
+        int a[n];
+        cout<<"Enter the elements of array: ";
+        for(int i=0 ; i<n ; i++)
+            cin>>a[i];
+
+        for(int i=0 ; i<n-2 ; i++)
+        {
+            for(int j=i+1 ; j<n-1 ; j++)
             {
-                min_index = j; 
-                com++;
+                for(int k=j+1 ; k<n ; k++)
+                {
+                    if(a[i] + a[j] == a[k])
+                    {
+                        flag++;
+                        cout<<i+1<<" "<<j+1<<" "<<k+1<<"\n";
+                    }
+                }
             }
-
-        //swapping elements af array
-        int temp = arr[min_index];
-        arr[min_index] = arr[i];
-        arr[i] = temp;
+        }
+        if(flag == 0)
+            cout<<"No sequence found.";
+    t--;
     }
-
-    //printing array
-    for(int i=0 ; i<n ; i++)
-        cout<<arr[i]<<" ";
-    cout<<"\n"<<"Total number of comparison: "<<com;
     return 0;
 }
+
