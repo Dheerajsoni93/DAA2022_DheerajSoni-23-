@@ -4,6 +4,10 @@ using namespace std;
 int main()
 {
     int n, i, key, left, right, flag=0;
+    int t;
+    cin>>t;
+    while(t != 0)
+    {
     cout<<"Enter the size of array: ";
     cin>>n;
     int arr[n];
@@ -15,7 +19,7 @@ int main()
     cin>>key;
     while(left<=right)
     {
-        int m = left + (right-1)/2;
+        int m = (left + right)/2;
         flag++;
         if(arr[m] == key)
         {
@@ -34,11 +38,13 @@ int main()
     }
     if(left == -1)
     {
-    cout<<"Total number of comparison: "<<flag+1;
+    cout<<"Total number of comparison: "<<flag;
     }
     else{
         cout<<"Element Not Found!"<<endl;
         cout<<"Total number of comparison: "<<flag;
+    }
+    t--;
     }
     return 0;
 }
