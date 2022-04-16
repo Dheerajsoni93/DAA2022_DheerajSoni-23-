@@ -1,33 +1,57 @@
 #include<iostream>
 using namespace std;
 
+int binary_search(int arr[], int l, int r, int key)
+{
+  if(r < l)
+        return -1;
+    int mid = l + (r-l)/2;
+
+    if(arr[mid] == key)
+        return mid;
+    if(arr[mid] > key)
+        return binary_search(arr, l , mid-1, key);
+    
+    return binary_search(arr, mid+1, r, key);
+}
+
+int countFrequency(int arr[], int n, int key)
+{
+    int pos = binary_search(arr, 0, n-1, key);
+
+    if(pos == -1)
+        return -1;
+    int count = 1; int left = pos-1, right = pos+1;
+    while(left>=0 && arr[left] == key)
+        {
+            count++;
+            left--;
+        }
+    while(right < n && arr[right] == key)
+    {
+        count++;
+        right++;
+    } 
+    return count;
+}
+
 int main()
 {
-    int comparison = 0, n;
-    cout<<"Enter the size of the array: ";
+    int n, key;
+    int t;
+    cin>>t;
+    while(t != 0)
+    {
+    cout<<"Enter the size of array: ";
     cin>>n;
-    int arr[n];
-    //input the elements in array
-    cout<<"Enter the elements: ";
-    for(int i=0 ; i<n ; i++)    
-        cin>>arr[i];
-
-    //Bubble sorting
+    int a[n];
+    cout<<"Enter the elements of array: ";
     for(int i=0 ; i<n ; i++)
-        for(int j=i+1 ; j<n ; j++)
-        {
-            if(arr[i] > arr[j])
-            {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                comparison++;
-            }
-        }
-
-    //printing array
-    for(int i=0 ; i<n ; i++)
-        cout<<arr[i]<<" ";
-    cout<<"\n"<<"Total number of comparisons are: "<<comparison;
+        cin>>a[i];
+    cout<<"Enter the key element: ";
+    cin>>key;
+    cout<<key<<" "<<countFrequency(a, n, key);
+    t--;
+    }
     return 0;
 }
