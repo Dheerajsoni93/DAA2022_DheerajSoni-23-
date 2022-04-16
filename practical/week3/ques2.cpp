@@ -3,19 +3,35 @@ using namespace std;
 
 int main()
 {
-    int n,key;
-    cout<<"Enter the size of array: ";
-    cin>>n;
-    int arr[n];
-    cout<<"Enter the size of array: ";
-    for(int i=0 ;i<n ;i++)
-        cin>>arr[i];
-    cout<<"Enter the key: ";
-    cin>>key;
-
-    for(int i=0 ;i<n-1 ; i++)
-        for(int j=i+1 ; j<n ;j++)
-            if(abs(arr[i]- arr[j]) == key)
-                    cout<<"indexes are"<<i<<j<<" ";
+    int t, n;
+    cin>>t;
+    while(t != 0)
+    {
+        cin>>n;
+        int arr[n], temp, j, k, swaps = 0, comp = 0;
+        for(int i=0 ; i<n ; i++)
+            cin>>arr[i];
+        for(int i=0 ; i<n-1 ; i++)
+        {
+            k = i;
+            for(j=i+1 ; j<n ; j++)
+            {
+                if(arr[j] < arr[k])
+                {
+                    k=j;
+                }
+                comp++;
+            }
+            temp = arr[i];
+            arr[i] = arr[k];
+            arr[k] = temp;
+            swaps++;
+        }
+        for(int i=0 ; i<n ; i++)
+            cout<<arr[i]<<" ";
+        cout<<"\ncomparisons = "<<comp<<endl;
+        cout<<"swaps = "<<swaps<<endl;
+        t--;
+    }
     return 0;
 }
