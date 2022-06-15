@@ -2,8 +2,8 @@
 Name : Dheeraj Soni
 University Roll NO : 2017323
 Section : CE
-Problem Statement : Given an unsorted array of alphabets containing duplicate elements. Design an algorithm and
-implement it using a program to find which alphabet has maximum number of occurrences and
+Problem Statement : Given a graph, design an algorithm and implement it using a program to find if a
+                    path exists between two given vertices or not.
 print it.
 */
 
